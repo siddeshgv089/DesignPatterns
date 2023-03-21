@@ -1,0 +1,46 @@
+#include<iostream>
+#include<vector>
+
+
+
+class Shape
+{
+public:
+	virtual double getArea() = 0;
+};
+
+class Rectangle : public Shape
+{
+private:
+	double length;
+	double width;
+public:
+	Rectangle(double length, double width) : length(length),width(width) {}
+	double getArea() { return length * width; }
+};
+
+class Square : public Shape
+{
+private:
+	double length;
+public:
+	Square(double length) : length(length) {}
+	double getArea() { return length* length; }
+};
+
+void printArea(Shape& shape)
+{
+
+	std::cout << "Area : " << shape.getArea() << std::endl;
+}
+
+int main()
+{
+
+	Rectangle rect(5, 10);
+	Square square(7);
+	printArea(rect); // prints "Area: 50"
+	printArea(square); // prints "Area: 49"
+
+	return 0;
+}
